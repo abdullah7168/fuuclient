@@ -1,0 +1,45 @@
+
+<style>
+  .is-bg{
+    background: #3f51b5;
+  }
+  .is-flex{
+    display: flex;
+    min-height: 100vh;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .mat-form-field{
+    display: inline;
+  }
+</style>
+<div class="container-fluid is-flex is-bg">
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-card>
+          <mat-card-title>
+            Login to your MIS Account
+          </mat-card-title>  
+          <mat-card-content>
+            <form class="example-form">
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="MIS ID" name="misid" [(ngModel)]="post.misid" value="" required>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field>
+                  <input matInput placeholder="Password" [(ngModel)]="post.password" name="password" [type]="hide ? 'password' : 'text'" required>
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                </mat-form-field>
+              </div>
+                <button mat-raised-button (click)="submitApplication()" type="submit" color="primary">Login</button>
+            </form>
+          </mat-card-content>
+          <mat-card-footer>
+          </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

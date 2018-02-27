@@ -1,0 +1,119 @@
+<style>
+    .action-buttons{
+      display: inline-flex;
+    }
+    .action-buttons button{
+      margin-right:20px;
+    }
+    .toolbar-container{
+      display:flex;
+      justify-content:space-between;
+      width:80%;
+      margin:0 auto;
+    }
+    .mat-form-field-infix{
+      width:400px !important;
+    }
+    .mat-form-field{
+      display: inline;
+    }
+  </style>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div class="toolbar-container">
+        <span>FUUAST</span>
+        <mat-menu #appMenu="matMenu">
+          <button mat-menu-item>Degree Verification</button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item>Logout</button>
+        </mat-menu>
+        <mat-menu #notificationMenu="matMenu">
+          <button *ngFor="let notification of notifications" mat-menu-item>{{notification.note}}</button>
+        </mat-menu>
+        
+        <div class="action-buttons">
+          <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
+            {{notifications.length}}
+            <mat-icon>notifications</mat-icon>
+          </button>
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar-row>
+      <mat-divider></mat-divider>
+    <mat-toolbar-row color="accent">
+      <div class="toolbar-container">
+        <span>Degree Verification Form</span>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2" style="margin-top:40px;">
+        <mat-card>
+          <mat-card-title>
+            Fill in the Form
+          </mat-card-title>  
+          <mat-card-content>
+            <form class="example-form">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Name" name="name" value="" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <input matInput placeholder="Father Name" value="" name="fathername" required>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                   <mat-form-field>
+                      <mat-select name="dpt" placeholder="Department" aria-required="required" required>
+                        <mat-option *ngFor="let dpt of dpts" [value]="dpt.name">
+                          {{ dpt.name }}
+                        </mat-option>
+                      </mat-select>
+                   </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-select name="program" placeholder="Program" aria-required="required">
+                        <mat-option *ngFor="let program of programs" [value]="program.name">
+                          {{ program.name }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="CNIC" value="" name="cnic" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field>
+                      <span matPrefix>+92 &nbsp;</span>
+                      <input type="tel" matInput placeholder="Phone" required>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <button mat-raised-button color="primary">Submit</button>
+            </form>
+          </mat-card-content>
+          <mat-card-footer>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+    
